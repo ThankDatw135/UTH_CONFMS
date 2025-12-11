@@ -1,36 +1,63 @@
-// frontend/src/pages/admin/AdminDashboard.jsx
-export default function AdminDashboard() {
-  return (
-    <div style={{ padding: 20, border: "5px solid red", borderRadius: 10 }}>
-      <h1 style={{ color: "red" }}>🛑 KHU VỰC QUẢN TRỊ VIÊN (ADMIN)</h1>
-      <p>Chỉ Admin mới nhìn thấy bảng này.</p>
+// src/pages/admin/AdminDashboard.jsx
+import React from "react";
+import DashboardLayout from "../../components/Layout/DashboardLayout.jsx";
 
-      {/* Giả lập chức năng Admin */}
-      <table border="1" style={{ width: "100%", marginTop: 20 }}>
-        <thead>
-          <tr style={{ background: "#ddd" }}>
-            <th>User ID</th>
-            <th>Tên</th>
-            <th>Hành động</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>001</td>
-            <td>Nguyễn Văn A</td>
-            <td>
-              <button>Xóa User</button>
-            </td>
-          </tr>
-          <tr>
-            <td>002</td>
-            <td>Trần Thị B</td>
-            <td>
-              <button>Xóa User</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+const AdminDashboard = () => {
+  return (
+    <DashboardLayout
+      roleLabel="Site Administrator"
+      title="Bảng điều khiển Site Administrator"
+      subtitle="Quản trị nền tảng đa hội nghị: tenancy, RBAC, SMTP/quota, backup/restore và AI governance."
+    >
+      <div className="dash-grid">
+        <div className="dash-card">
+          <h3>Tenancy &amp; RBAC</h3>
+          <p>
+            Quản lý nhiều conference trong cùng một hệ thống, tạo tài khoản,
+            gán vai trò (Author, Reviewer, PC, Chair, Admin) và phân quyền truy
+            cập chi tiết.
+          </p>
+          <button className="btn-primary">
+            Quản lý người dùng &amp; vai trò
+          </button>
+        </div>
+
+        <div className="dash-card">
+          <h3>SMTP &amp; Mail quota</h3>
+          <p>
+            Cấu hình SMTP server, domain gửi email, giới hạn quota theo hội
+            nghị, theo dõi lỗi gửi và trạng thái hàng đợi email.
+          </p>
+          <button className="btn-secondary">
+            Cấu hình email hệ thống
+          </button>
+        </div>
+
+        <div className="dash-card">
+          <h3>Backup / Restore &amp; Logs</h3>
+          <p>
+            Thực hiện backup định kỳ dữ liệu hội nghị, khôi phục khi cần; xem
+            audit log các thao tác quan trọng trong hệ thống.
+          </p>
+          <button className="btn-secondary">
+            Mở màn hình backup &amp; logs
+          </button>
+        </div>
+
+        <div className="dash-card">
+          <h3>AI Governance Controls</h3>
+          <p>
+            Bật / tắt từng tính năng AI (grammar check, summary, similarity
+            hints…), xem log AI (prompt, model ID, timestamp, input hash) và
+            xuất báo cáo phục vụ kiểm toán.
+          </p>
+          <button className="btn-secondary">
+            Bảng điều khiển AI governance
+          </button>
+        </div>
+      </div>
+    </DashboardLayout>
   );
-}
+};
+
+export default AdminDashboard;
